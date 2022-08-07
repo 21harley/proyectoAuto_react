@@ -24,7 +24,7 @@ function Register () {
   }
 
   return (
-    <div >
+    <div className='container' >
         <div >
             <div >
                 <h1 >Register</h1>

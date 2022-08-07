@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { loginState } from './reducers/slices/User'
 import AppRoutes from './routes/AppRoute'
+import "./public/sass/index.scss";
 
 const auth = getAuth(appFire)
 

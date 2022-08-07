@@ -38,17 +38,17 @@ function Login () {
   }
 
   return (
-    <div >
-        <div >
+    <div className='container' >
+        <div className='container__login'>
             <div >
                 <h1>Login</h1>
             </div>
-            <form action=""  onSubmit={(e) => { event(e) }}>
-                <div >
+            <form className='form__login' action=""  onSubmit={(e) => { event(e) }}>
+                <div className='container__grid'>
                   <label htmlFor="email">email</label>
                 <input  type="email" name='email' required/>
                 </div>
-                <div >
+                <div className='container__grid'>
                   <label htmlFor="password">password</label>
                   <input  type="password" name='password' required/>
                 </div>
