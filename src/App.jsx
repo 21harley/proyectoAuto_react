@@ -1,33 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import appFire from './services/firebase/firebaseDB'
+import { useDispatch } from 'react-redux'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { loginState } from './reducers/slices/User'
+import AppRoutes from './routes/AppRoute'
 
-function App() {
-  const [count, setCount] = useState(0)
+const auth = getAuth(appFire)
 
+function App () {
+  const dispatch = useDispatch()
+
+  const validar = (datos) => {
+    dispatch(loginState({ user: datos }))
+  }
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      validar(user.uid)
+      // ...
+    } else {
+      // User is signed out
+      // ...
+      console.log('User is signed out')
+    }
+  })
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test s HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+      <AppRoutes/>
   )
 }
 
