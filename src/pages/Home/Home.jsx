@@ -4,7 +4,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import Login from '../Login/Login'
 
 function Home(){
-  const { user,login_sucess } = useSelector((state) => state.User);
+  const { user,login_sucess } = useSelector((state) => state.reducerAll.User);
   //const dispatch = useDispatch()
 
   return (
@@ -18,6 +18,7 @@ function Home(){
           )
         : <Login/>
     }
+
     </>
   )
 }
