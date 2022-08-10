@@ -7,6 +7,7 @@ import {
   signInWithRedirect,
   GoogleAuthProvider
 } from 'firebase/auth'
+import { getDatabase, onValue, ref} from 'firebase/database'
 
 export async function creteUserFire (obj) {
   const auth = getAuth(appFire)
@@ -36,4 +37,14 @@ export function providerAuth (type) {
     case 'google':
       return signInWithRedirect(auth, new GoogleAuthProvider())
   }
+}
+
+export function viewRegisterUsers(setArray){
+  const db = getDatabase()
+  const reference = ref(db, "Usuarios")
+  onValue(reference, (resp) => {
+    const data = resp.val()
+    setArray(Object.entries(data))
+  })
+
 }
