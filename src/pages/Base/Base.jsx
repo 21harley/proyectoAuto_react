@@ -5,14 +5,14 @@ import { setData } from "../../reducers/slices/Gauge";
 import { useEffect, useState } from 'react';
 import { Outlet } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { viewRegisterUsers } from '../../services/firebase/functionFire';
+import { viewRegisterUsers, setTempurature } from '../../services/firebase/functionFire';
 
 
 const Base = () => {
     const { data } = useSelector((state) => state.reducerAll.Gauge);
     const dispatch = useDispatch()
     const [users, setUsers] = useState([])
-    const [value, setValue] = useState(50)//aqui puede ir el valor que saque de firebase
+    const [value, setValue] = useState(0)//aqui puede ir el valor que saque de firebase
 
     const ch4Function = () =>{
         console.log("para ch4")
@@ -23,10 +23,13 @@ const Base = () => {
     }
 
     useEffect(() => {
+        setTempurature(setValue)
         viewRegisterUsers(setUsers)
-        dispatch(setData({ temperature: value }))
     }, [])
 
+    useEffect(() => {
+        dispatch(setData({ temperature: value }))
+    }, [value])
 
     return (
         <div>
@@ -38,7 +41,6 @@ const Base = () => {
                     method1={ch4Function}
                     method2={ch5Function}
                 />
-
             </div>
         </div>
     )

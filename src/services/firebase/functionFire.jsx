@@ -48,3 +48,16 @@ export function viewRegisterUsers(setArray){
   })
 
 }
+
+export function setTempurature(setValue){
+  const db = getDatabase()
+  const reference = ref(db, "Nodemcu/TThermok")
+  onValue(reference, (resp) => {
+    const data = resp.val()
+    const list = Object.values(data)
+    const indexChoose = Math.round(Math.random() * list.length)
+    const temp = list[indexChoose]
+    setValue(temp)
+  })
+  
+}
