@@ -25,24 +25,24 @@ function Register () {
 
   return (
     <div className='container' >
-        <div >
+        <div className='container__register'>
             <div >
                 <h1 >Register</h1>
             </div>
-            <form action=""  onSubmit={(e) => { event(e) }}>
-              <div >
+            <form className='form__register' action=""  onSubmit={(e) => { event(e) }}>
+              <div className='container__grid'>
                 <label htmlFor="username" >username</label>
                 <input type="text" name='username' required/>
               </div>
-              <div >
+              <div className='container__grid'>
                 <label htmlFor="email" >email</label>
                 <input  type="email" name='email' required/>
               </div>
-              <div >
+              <div className='container__grid'>
                 <label htmlFor="password" >password</label>
                 <input  type="password" name='password' required/>
               </div>
-                <button  >Register</button>
+                <button className='button' >Register</button>
             </form>
             <div >
                 <p >Already registered?</p><Link  to="/login">Log In</Link>

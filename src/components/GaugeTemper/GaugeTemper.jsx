@@ -2,7 +2,7 @@ import { Chart } from "react-google-charts";
 
 const GaugeTemper = ({ gauge_data }) => {
     const options = {
-        width: 270, height: 270,
+        width: 300, height: 300,
         greenFrom: 20, greenTo: 120,
         yellowFrom: 120, yellowTo: 200,
         redFrom: 200, redTo: 300,
@@ -13,14 +13,15 @@ const GaugeTemper = ({ gauge_data }) => {
 
 
     return (
+        <>
         <div style={{margin:"10px",}}>
-            <label>Temperatura</label>
             <Chart
                 chartType="Gauge"
                 data={gauge_data}
                 options={options}
             />
         </div>
+        </>
 
     )
 }

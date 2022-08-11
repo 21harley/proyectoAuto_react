@@ -15,16 +15,13 @@ const Navbar = () => {
 
   return (
       <>
-        <div>
-             <ul >
-                 <li>
-                     <button onClick={() => { routerApp('/home') }}>home </button>
-                 </li>
-                 <li>
-                     <button onClick={() => { routerApp('/login') }}>Closet </button>
+        <nav className='header-nav'>
+             <ul className='header-nav__ul'>
+                 <li className='header-nav__li' >
+                     <button className='button--closet'  onClick={() => { routerApp('/login') }}>Closet </button>
                  </li>
              </ul>
-        </div>
+        </nav>
     </>
   )
 }

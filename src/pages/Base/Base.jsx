@@ -32,10 +32,11 @@ const Base = () => {
     }, [value])
 
     return (
-        <div>
+        <div className='base-body'>
             {users.length !== 0?<ListUser users={users} />:null}
             <Outlet />
-            <div style={{ display: "flex", }}>
+            <h3 className="title">Temperatura</h3>
+            <div className='body-temp'>
                 <GaugeTemper gauge_data={data} />
                 <Panel
                     method1={ch4Function}

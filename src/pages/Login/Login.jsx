@@ -18,6 +18,7 @@ function Login () {
 
       loginUser({ type: 'EmailAndPassword', email: email.value, pass: password.value })
         .then((result) => {
+          console.log(result);
           dispatch(login({ user: result?.user.uid }))
           navigate('/home');
         })
@@ -52,7 +53,7 @@ function Login () {
                   <label htmlFor="password">password</label>
                   <input  type="password" name='password' required/>
                 </div>
-                <button >Login</button>
+                <button className='button'>Login</button>
             </form>
             <div >
                 <p>Forgot password?</p><Link to="/register">Register now</Link>
